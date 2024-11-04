@@ -10,7 +10,7 @@
  * - stdio.h
  * - stdint.h
  *
- * @author Jack | R&D Dept. | EternalChip 立芯嵌入式
+ * @author LONG | R&D Dept. | EternalChip 
  *
  * @brief Provide the HAL APIs of Key and corresponding opetions.
  *

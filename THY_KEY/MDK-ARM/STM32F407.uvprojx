@@ -588,11 +588,6 @@
               <FileType>1</FileType>
               <FilePath>..\BSP\KEY\src\bsp_key.c</FilePath>
             </File>
-            <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\BSP\LED\src\bsp_led.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

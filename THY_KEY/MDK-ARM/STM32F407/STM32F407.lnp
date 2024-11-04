@@ -35,7 +35,6 @@
 "stm32f407\heap_4.o"
 "stm32f407\port.o"
 "stm32f407\bsp_key.o"
-"stm32f407\bsp_led.o"
 --library_type=microlib --strict --scatter "STM32F407\STM32F407.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

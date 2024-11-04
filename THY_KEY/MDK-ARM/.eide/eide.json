@@ -171,9 +171,6 @@
         "files": [
           {
             "path": "../BSP/KEY/src/bsp_key.c"
-          },
-          {
-            "path": "../BSP/LED/src/bsp_led.c"
           }
         ],
         "folders": []

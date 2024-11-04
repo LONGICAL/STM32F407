@@ -61,7 +61,7 @@ osThreadId_t key_TaskHandle;
 const osThreadAttr_t key_Task_attributes = {
   .name = "key_Task",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 
 //*********************Thread_Func **********************//
@@ -130,10 +130,16 @@ void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
-  uint32_t receuved_value = 0;
+  uint32_t received_value = 0;
   for(;;)
   {
-    
+    if(key_queue != 0)
+    {
+      if(xQueueReceive(key_queue, &(received_value), (TickType_t) 10))
+      {
+        printf("received_value NUMBER [%d] \r\n", received_value);
+      }
+    }
     //printf("shabibi \r\n");
     osDelay(100);
   }
@@ -148,37 +154,40 @@ void key_task_func(void *argument)
   key_statues_t key_ret           =          KEY_OK;
   key_press_statues_t key_statues = KEY_NOT_PRESSED;
   key_queue = xQueueCreate(10, sizeof(uint32_t));
-
+  uint32_t counter_tick = 0;
   if (NULL == key_queue)
   {
-    printf("队列创建失败 \r\n");
+    printf("error \r\n");
   }
   else
   {
-    printf("队列创建成功 \r\n");
+    printf("win \r\n");
   }
   /* Infinite loop */
   for (;;)
   {
-     
+    
     key_ret = key_scan(&key_statues);
     if (KEY_OK == key_ret)
     {
+
       if (KEY_PRESSED == key_statues)
       {
-        printf("按下了 \r\n");
-        xQueueSendToFront(key_queue, &key_statues, 0);
-        if (pdPASS == xQueueSendToFront(key_queue, &key_statues, 0))
+        counter_tick ++;
+        printf("press \r\n");
+        //xQueueSendToFront(key_queue, &key_statues, 0);
+        if (pdTRUE == xQueueSendToFront(key_queue, &counter_tick, 0))
         {
-          printf("发送成功 \r\n");
+          
+          printf("send OK \r\n");
         }
       }
     }
     if(KEY_OK != key_ret)
     {
-      printf("没按下 \r\n");
+      printf("not press \r\n");
     }
-    osDelay(1000);
+    osDelay(100);
   }
   /* USER CODE END key_task */
 }
