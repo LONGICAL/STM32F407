@@ -141,7 +141,7 @@ void StartDefaultTask(void *argument)
       }
     }
     //printf("shabibi \r\n");
-    osDelay(100);
+    osDelay(1);
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -157,35 +157,35 @@ void key_task_func(void *argument)
   uint32_t counter_tick = 0;
   if (NULL == key_queue)
   {
-    printf("error \r\n");
+    printf("key_queue created failed \r\n");
   }
   else
   {
-    printf("win \r\n");
+    printf("key_queue created successfully \r\n");
   }
   /* Infinite loop */
   for (;;)
   {
-    
+    counter_tick ++;
     key_ret = key_scan(&key_statues);
     if (KEY_OK == key_ret)
     {
 
       if (KEY_PRESSED == key_statues)
       {
-        counter_tick ++;
-        printf("press \r\n");
+        
+        printf("Key_Pressed \r\n");
         //xQueueSendToFront(key_queue, &key_statues, 0);
-        if (pdTRUE == xQueueSendToFront(key_queue, &counter_tick, 0))
+        if ( pdTRUE == xQueueSendToFront(key_queue,&counter_tick,0))
         {
           
-          printf("send OK \r\n");
+          printf("send successfully \r\n");
         }
       }
     }
     if(KEY_OK != key_ret)
     {
-      printf("not press \r\n");
+      printf("Key_not_Pressed \r\n");
     }
     osDelay(100);
   }
