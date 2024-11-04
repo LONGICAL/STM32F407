@@ -346,7 +346,6 @@
           "../Drivers/CMSIS/Include",
           "../BSP/LED/inc",
           "../BSP/KEY/inc",
-          ".cmsis/include",
           "RTE/_STM32F407"
         ],
         "libList": [],
