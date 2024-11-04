@@ -148,7 +148,7 @@ void key_task_func(void *argument)
   key_statues_t key_ret           =          KEY_OK;
   key_press_statues_t key_statues = KEY_NOT_PRESSED;
   key_queue = xQueueCreate(10, sizeof(uint32_t));
-  uint32_t = counter_tick;
+
   if (NULL == key_queue)
   {
     printf("队列创建失败 \r\n");
