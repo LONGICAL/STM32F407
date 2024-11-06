@@ -25,9 +25,32 @@
  *****************************************************************************/
 //******************************** Includes *********************************//
 #include "bsp_led.h"
+
 //******************************** Includes *********************************//
 
 //******************************** Defines **********************************//
-
+led_status_t led_on_off(led_operation_t led_operation)
+{
+    led_status_t ret = LED_OK;
+    if(LED_ON==led_operation)
+    {
+        // turn on led
+        HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_SET);
+    }
+    else if(LED_OFF==led_operation)
+    {
+        // turn off led
+        HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_RESET);
+    }
+    else if (LED_TOGGLE == led_operation)
+    {
+        // LED_TOGGLE led
+        HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
+    }
+    else
+    {
+        ret = LED_ERROR;
+    }
+}
 //******************************** Defines **********************************//
 

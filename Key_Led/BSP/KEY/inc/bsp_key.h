@@ -1,11 +1,3 @@
-/*
- * @Author: LONGICAL 763113963@qq.com
- * @Date: 2024-11-03 10:22:02
- * @LastEditors: LONGICAL 763113963@qq.com
- * @LastEditTime: 2024-11-04 16:07:45
- * @FilePath: \MDK-ARMc:\Users\LONG\Desktop\STM32F407\THY_KEY\BSP\KEY\inc\bsp_key.h
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 /******************************************************************************
  * Copyright (C) 2024 EternalChip, Inc.(Gmbh) or its affiliates.
  *
@@ -78,6 +70,10 @@ typedef enum
 } key_press_statues_t;
 
 //******************************** Defines **********************************//
+
+//******************************** Declaring ********************************//
 key_statues_t key_scan(key_press_statues_t *key_value);
 void key_task_func(void *argument);
+//******************************** Declaring ********************************//
+
 #endif // BSP_KEY_H
