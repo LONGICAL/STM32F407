@@ -100,6 +100,7 @@ void MX_FREERTOS_Init(void) {
     /* add threads, ... */
     /* USER CODE END RTOS_THREADS */
     key_TaskHandle = osThreadNew(key_task_func, NULL, &key_Task_attributes);
+    led_TaskHandle = osThreadNew(led_task_func, NULL, &led_Task_attributes);
     /* USER CODE BEGIN RTOS_EVENTS */
     /* add events, ... */
     /* USER CODE END RTOS_EVENTS */
@@ -116,15 +117,21 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
     /* USER CODE BEGIN StartDefaultTask */
-    uint32_t received_value;
+    uint32_t       received_value =      0;
+    led_operation_t led_ops_value = LED_ON;
     /* Infinite loop */
     for(;;)
     {
         if(key_queue != 0)
         {
-            if (xQueueReceive(key_queue, &(received_value), (TickType_t) 10))
+            if (xQueueReceive(key_queue, &(received_value), (TickType_t) 100))
             {
                 printf("receive key value: [%d]\r\n", received_value);
+                led_ops_value = LED_TOGGLE;
+                if(pdTRUE == xQueueSendToFront(led_queue, &led_ops_value,  0))
+                {
+                    printf("send led successfully\r\n");
+                }
             }
         }
         osDelay(1);

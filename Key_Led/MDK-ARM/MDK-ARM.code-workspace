@@ -24,7 +24,12 @@
             "editor.insertSpaces": true,
             "editor.tabSize": 4,
             "editor.autoIndent": "advanced"
-        }
+        },
+        "C_Cpp.vcFormat.indent.accessSpecifiers": true,
+        "C_Cpp.vcFormat.indent.braces": true,
+        "C_Cpp.vcFormat.indent.caseContentsWhenBlock": true,
+        "C_Cpp.vcFormat.indent.caseLabels": true,
+        "editor.detectIndentation": false
     },
     "extensions": {
         "recommendations": [

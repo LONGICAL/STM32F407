@@ -41,12 +41,14 @@
 //******************************** Defines **********************************//
 
 //********************* Thread_Func **********************//
-
+extern osThreadId_t led_TaskHandle;
+extern const osThreadAttr_t led_Task_attributes;
 //********************* Thread_Func **********************//
 
 //********************* Queue_Handler ********************//
-
+extern QueueHandle_t led_queue;
 //********************* Queue_Handler ********************//
+
 //* function resturn status  *//
 typedef enum
 {
@@ -71,6 +73,7 @@ typedef enum
 
 //******************************** Declaring ********************************//
 led_status_t led_on_off(led_operation_t led_operation);
+void led_task_func(void *argument);
 //******************************** Declaring ********************************//
 
 #endif // BSP_LED_H

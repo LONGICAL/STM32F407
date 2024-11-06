@@ -97,7 +97,7 @@ void key_task_func(void *argument)
         {
             printf("key not press\r\n");
         }
-        osDelay(500);
+        osDelay(100);
     }    
     
 }
